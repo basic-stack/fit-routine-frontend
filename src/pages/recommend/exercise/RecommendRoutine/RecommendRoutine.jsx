@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Button from 'components/common/Button/Button';
 import Category from 'components/common/Category/Category';
 import CheckBox from 'components/common/CheckBox/CheckBox';
-import FormTitle from 'components/recommend/FormTitle/FormTitle';
+import FormTitle from 'components/common/FormTitle/FormTitle';
 import styles from 'pages/recommend/exercise/RecommendRoutine/RecommendRoutine.module.css';
 
 export default function RecommendRoutine() {

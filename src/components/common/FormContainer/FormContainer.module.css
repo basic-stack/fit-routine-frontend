@@ -1,5 +1,4 @@
-/* 추천페이지 폼 영역 */
-.formBox {
+.container {
     width: 45rem;
     height: 45rem;
     display: flex;
