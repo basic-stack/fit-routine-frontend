@@ -38,7 +38,7 @@ const CheckBox = (
                 {label}
             </label>
         </div>
-    )
-}
+    );
+};
 
-export default CheckBox
+export default CheckBox;
