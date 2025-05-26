@@ -31,9 +31,9 @@ function BarChart() {
                 // backgroundColor: ['#BAD6EB', '#334EAC', '#D0E3FF'], // 그래프 Bar의 색상
                 // backgroundColor: ['rgb(192,192,192)', 'rgb(255, 215, 0)', 'rgb(205,127,50)'], // 그래프 Bar의 색상
                 backgroundColor: [
-                    'linear-gradient(90deg, #FFd700, #FFa500)',
-                    'linear-gradient(90deg, #C0C0C0, #E0E0E0)',
-                    '#B87333',
+                    '#C0C0C0',
+                    '#FFD700',
+                    '#CD7F32'
                 ], // 그래프 Bar의 색상
                 borderWidth: 0,
             },
