@@ -1,7 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Likes from 'components/common/Likes/Likes';
 import styles from './BoardPreview.module.css';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 /**
  * 게시물 카드 형식 미리보기 컴포넌트
@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
  * @param {string} boardTitle 게시물 제목
  * @param {number} boardId 게시물 번호
  */
-export default function BoardPreview(
+function BoardPreview(
     {
         imgSrc,
         boardWriter,
@@ -62,3 +62,5 @@ export default function BoardPreview(
                     </div>
     )
 }
+
+export default BoardPreview;

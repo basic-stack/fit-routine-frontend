@@ -1,13 +1,13 @@
-import Input from "components/common/Input/Input";
 import { useState } from "react";
-import styles from './BoardAddEditPage.module.css';
+import Input from "components/common/Input/Input";
 import CategorySelect from "components/blog/CategorySelect/CategorySelect";
 import Button from "components/common/Button/Button";
+import styles from './BoardAddEditPage.module.css';
 
 /**
  * 게시물 추가 및 수정 페이지
  */
-export default function BoardAddEditPage() {
+function BoardAddEditPage() {
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState('');
     const [content, setContent] = useState('');
@@ -71,3 +71,5 @@ export default function BoardAddEditPage() {
     )
 
 }
+
+export default BoardAddEditPage;

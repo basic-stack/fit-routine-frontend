@@ -1,5 +1,5 @@
-import styles from './PopularPosts.module.css';
 import BoardPreview from 'components/blog/BoardPreview/BoardPreview';
+import styles from './PopularPosts.module.css';
 
 function PopularPost() {
     return (

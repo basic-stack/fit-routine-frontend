@@ -1,6 +1,6 @@
-import styles from './Likes.module.css';
 import {FaHeart} from "react-icons/fa6";
 import {FaRegHeart} from "react-icons/fa";
+import styles from './Likes.module.css';
 
 /**
  * 좋아요를 나타내는 컴포넌트.

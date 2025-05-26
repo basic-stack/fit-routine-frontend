@@ -1,13 +1,13 @@
+import { useEffect, useState } from 'react';
 import Button from 'components/common/Button/Button';
-import styles from './AllBoardsPage.module.css';
 import BoardsPaging from 'components/blog/BoardsPaging/BoardsPaging';
 import CategorySelect from 'components/blog/CategorySelect/CategorySelect';
-import { useEffect, useState } from 'react';
+import styles from './AllBoardsPage.module.css';
 
 /**
  * 전체 게시판 페이지
  */
-export default function AllBoardsPage() {
+function AllBoardsPage() {
 
     const [category, setCategory] = useState('자유');
     const [order, setOrder] = useState('like');
@@ -62,3 +62,5 @@ export default function AllBoardsPage() {
         </div>
     )
 }
+
+export default AllBoardsPage;

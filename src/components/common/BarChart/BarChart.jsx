@@ -1,4 +1,3 @@
-import React from "react";
 import { Bar } from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -8,6 +7,7 @@ import {
     Tooltip,
     CategoryScale,
 } from 'chart.js';
+import React from "react";
 
 // Chart.js 요소 등록 (반드시 필요함)
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip);

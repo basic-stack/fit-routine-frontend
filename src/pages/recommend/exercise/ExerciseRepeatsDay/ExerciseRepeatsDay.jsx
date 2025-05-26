@@ -1,3 +1,5 @@
+import {useState} from 'react';
+
 import Button from 'components/common/Button/Button';
 import Radio from 'components/common/Radio/Radio';
 import RadioGroup from 'components/common/RadioGroup/RadioGroup';
@@ -6,7 +8,7 @@ import FormTitle from 'components/common/FormTitle/FormTitle';
 
 import styles from 'pages/recommend/exercise/ExerciseRepeatsDay/ExerciseRepeatsDay.module.css';
 
-import {useState} from 'react';
+
 
 export default function ExerciseRepeatsDay() {
 

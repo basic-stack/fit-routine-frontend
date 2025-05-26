@@ -1,7 +1,7 @@
 import Info from 'components/common/Info/Info';
-import styles from './InfoEdit.module.css';
 import Input from 'components/common/Input/Input';
 import Button from 'components/common/Button/Button';
+import styles from './InfoEdit.module.css';
 
 function InfoEdit() {
     return (

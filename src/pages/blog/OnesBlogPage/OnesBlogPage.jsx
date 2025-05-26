@@ -1,15 +1,15 @@
-import styles from './OnesBlogPage.module.css';
 import { VscEdit } from "react-icons/vsc";
+import { useEffect, useParams } from 'react';
 import BoardsPaging from 'components/blog/BoardsPaging/BoardsPaging';
 import Likes from 'components/common/Likes/Likes';
 import BlogGrade from 'components/common/BlogGrade/BlogGrade';
 import GenderImage from 'components/common/genderImage/GenderImage';
-import { useEffect, useParams } from 'react';
+import styles from './OnesBlogPage.module.css';
 
 /**
  * 블로그 페이지
  */
-export default function OnesBlogPage() {
+function OnesBlogPage() {
     // const { nickname } = useParams('일김현');    // <Route path="/blog/onesblog/:nickname" element={<OnesBlogPage />} />
     
 
@@ -66,3 +66,5 @@ export default function OnesBlogPage() {
         </div>
     )
 }
+
+export default OnesBlogPage;

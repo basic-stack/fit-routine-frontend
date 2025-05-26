@@ -30,3 +30,17 @@
   list-style:inside;
   margin-left:0.5rem;
 }
+
+.editDeleteBtn {
+  margin-top: 6.5rem;
+  margin-left: 65%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 import {VscWarning} from "react-icons/vsc";
 import styles from './ErrorPage.module.css';
 
-export default function ErrorPage() {
+function ErrorPage() {
     return (
             <div className={styles.mainContainer}>
                 <div className={styles.text}>
@@ -16,3 +16,5 @@ export default function ErrorPage() {
             </div>
     )
 }
+
+export default ErrorPage;

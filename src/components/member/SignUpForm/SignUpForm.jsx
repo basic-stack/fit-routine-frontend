@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react'
 import {
     checkEmailDuplicate,
     checkPhoneNumberDuplicate,
     checkNicknameDuplicate
-} from 'utils/api/memberApi'
+} from 'utils/api/memberApi';
 import {
     validateEmail,
     validateNickname,
@@ -11,12 +10,13 @@ import {
     validatePhoneNumber,
     validateHeight,
     validateWeight
-} from 'utils/helpers/validation'
-import Button from 'components/common/Button/Button'
-import Input from 'components/common/Input/Input'
-import Radio from 'components/common/Radio/Radio'
-import RadioGroup from 'components/common/RadioGroup/RadioGroup'
-import useDebounce from "utils/hooks/debounce"
+} from 'utils/helpers/validation';
+import React, {useEffect, useState} from 'react';
+import Button from 'components/common/Button/Button';
+import Input from 'components/common/Input/Input';
+import Radio from 'components/common/Radio/Radio';
+import RadioGroup from 'components/common/RadioGroup/RadioGroup';
+import useDebounce from "utils/hooks/debounce";
 
 const checkForm = formData => {
     const errors = {}

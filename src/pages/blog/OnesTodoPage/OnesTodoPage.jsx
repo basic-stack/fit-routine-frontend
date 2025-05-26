@@ -1,18 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import koLocale from '@fullcalendar/core/locales/ko';
-import "./FullCalendar.css";
-import styles from './OnesTodoPage.module.css';
 import {useEffect, useState} from 'react';
 import BlogGrade from 'components/common/BlogGrade/BlogGrade';
-import { useNavigate } from 'react-router-dom';
 import TodoList from 'components/blog/TodoList/TodoList';
+import "./FullCalendar.css";
+import styles from './OnesTodoPage.module.css';
 
 /**
  * TODO 페이지
  */
-export default function OnesTodoPage() {
+function OnesTodoPage() {
     const [dateData, setDateData] = useState({});
     const [nickname, setNickname] = useState('유성재');
     const [grade, setGrade] = useState(999);
@@ -52,7 +52,7 @@ export default function OnesTodoPage() {
     }
 
     // 로그인 정보로 TodoList api 요청
-    const getUserTodoList = () => {
+    const getUserTodoList = async () => {
         // const data = axios.get('info/userTodoList',{토큰값 혹은 context의 아이디값});
         // setTodoList(data.todoList);
     }
@@ -152,3 +152,5 @@ export default function OnesTodoPage() {
         </div>
     );
 }
+
+export default OnesTodoPage;

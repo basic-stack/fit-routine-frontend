@@ -1,9 +1,10 @@
+import { VscEdit, VscIndent, VscTrash } from "react-icons/vsc";
+import { useRef } from "react";
 import GenderImage from "components/common/genderImage/GenderImage";
 import Likes from "components/common/Likes/Likes";
-import { VscEdit, VscIndent, VscTrash } from "react-icons/vsc";
 import ReplyInput from "../ReplyInput/ReplyInput";
 import styles from './Reply.module.css';
-import { useRef } from "react";
+
 
 /**
  * 
@@ -13,7 +14,7 @@ import { useRef } from "react";
  * @param {string} replyContent 댓글 내용
  * @param {number} replyId 댓글 번호
  */
-export default function Reply(
+function Reply(
     {
         nickname,
         replyDate,
@@ -72,3 +73,5 @@ export default function Reply(
                 </div>
     )
 }
+
+export default Reply;

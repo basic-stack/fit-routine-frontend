@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import BoardPreview from "../BoardPreview/BoardPreview";
 import styles from './BoardsPaging.module.css';
 /**
@@ -10,7 +10,7 @@ import styles from './BoardsPaging.module.css';
  * @param {string} order 게시물 나열 순서 - latest:최신순(기본값) / like:좋아요순
  * @param {string} category 게시물 카테고리 - free:모두(기본값) / muscle:근육증진 / diet:체중감량 / stamina:체력증진
  */
-export default function BoardsPaging(
+function BoardsPaging(
     {
         tempboardList,
         nickname,
@@ -107,3 +107,5 @@ export default function BoardsPaging(
         </>
     );
 }
+
+export default BoardsPaging;

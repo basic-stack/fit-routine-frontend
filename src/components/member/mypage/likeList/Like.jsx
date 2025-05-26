@@ -1,7 +1,7 @@
 import GenderImage from 'components/common/genderImage/GenderImage';
-import styles from './Like.module.css';
 import BlogGrade from 'components/common/BlogGrade/BlogGrade';
 import Button from 'components/common/Button/Button';
+import styles from './Like.module.css';
 
 function Like({ gender, nickName, grade }) {
     return (

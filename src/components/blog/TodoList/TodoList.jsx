@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import Button from 'components/common/Button/Button';
 import styles from './TodoList.module.css';
 /**
  * Blog의 Todo페이지에서 개인이 정한 식단 및 운동을 보여주는 컴포넌트
@@ -9,10 +11,13 @@ function TodoList (
         todoList
     }
 ) {
+    const [header, setHeader] = useState('');
 
+    // todoList 
     const UnpackTodoList = () => {
 
     }
+
 
     return(
         <div className={styles.listText}>
@@ -26,6 +31,10 @@ function TodoList (
                     <li>풀업</li>
                     <li>레그프레스</li>
                 </ul>
+            </div>
+            <div className={styles.editDeleteBtn}>
+                <Button size='short' text='수정'/>
+                <Button size='short' text='삭제'/>
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ import styles from './ReplyInput.module.css';
  * @param {string} [size] 일반 댓글 입력칸인지 대댓글 입력칸인지 여부 / small : 대댓글
  * @param {number} [replyId] 댓글 번호 (대댓글 입력칸일때만 사용)
  */
-export default function ReplyInput(
+function ReplyInput(
     {
         size,
         replyId = ""
@@ -27,3 +27,5 @@ export default function ReplyInput(
         </div>
     )
 }
+
+export default ReplyInput;

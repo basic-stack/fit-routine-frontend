@@ -1,8 +1,8 @@
+import {FcCalculator} from "react-icons/fc";
 import Input from 'components/common/Input/Input';
-import styles from './Calculator.module.css';
 import Button from 'components/common/Button/Button';
 import DoughnutChart from 'components/common/DoughnutChart/DoughnutChart';
-import {FcCalculator} from "react-icons/fc";
+import styles from './Calculator.module.css';
 
 
 function Calculator() {

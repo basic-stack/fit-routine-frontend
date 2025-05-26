@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import styles from './MyPageForm.module.css';
 import Profile from './profile/Profile';
 import LikeList from './likeList/LikeList';
+import styles from './MyPageForm.module.css';
 
 
 function MyPageForm() {

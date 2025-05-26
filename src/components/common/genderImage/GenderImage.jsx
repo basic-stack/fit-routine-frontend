@@ -1,12 +1,12 @@
-import styles from './GenderImage.module.css';
 import { VscAccount } from "react-icons/vsc";
+import styles from './GenderImage.module.css';
 
 /**
  * 성별 이미지 컴포넌트
  * 
  * @param {string} gender - 성별 (male, female) 
  */
-export default function GenderImage(
+function GenderImage(
     {
         gender
     }
@@ -18,3 +18,5 @@ export default function GenderImage(
         </div>
     )
 }
+
+export default GenderImage;

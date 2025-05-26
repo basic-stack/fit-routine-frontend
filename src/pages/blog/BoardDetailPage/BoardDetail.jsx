@@ -1,16 +1,16 @@
-import {useEffect, useState} from 'react';
-import styles from './BoardDetail.module.css';
 import {VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
+import { useNavigate, useParams } from 'react-router-dom';
+import {useEffect, useState} from 'react';
 import Button from 'components/common/Button/Button';
 import Likes from 'components/common/Likes/Likes';
 import ReplyInput from 'components/blog/ReplyInput/ReplyInput';
 import Reply from 'components/blog/Reply/Reply';
-import { useNavigate, useParams } from 'react-router-dom';
+import styles from './BoardDetail.module.css';
 
 /**
  * 게시물 상세 정보 페이지
  */
-export default function BoardDetail() {
+function BoardDetail() {
 
     const { boardId } = useParams();    // <Route path="/blog/boardDetail/:boardId" element={<BoardDetail />} />
 
@@ -131,3 +131,5 @@ export default function BoardDetail() {
         </div>
     )
 }
+
+export default BoardDetail;

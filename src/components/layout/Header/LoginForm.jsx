@@ -1,7 +1,6 @@
-import styles from 'components/layout/Header/Header.module.css';
-
 import {Link} from "react-router-dom";
-import Button from '../../common/Button/Button';
+import Button from 'components/common/Button/Button';
+import styles from 'components/layout/Header/Header.module.css';
 
 export default function Login() {
 

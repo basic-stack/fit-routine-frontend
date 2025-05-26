@@ -1,6 +1,6 @@
 import MyPageForm from 'components/member/mypage/MyPageForm';
-import styles from './MyPage.module.css';
 import ReSign from 'components/member/mypage/ReSign/ReSign';
+import styles from './MyPage.module.css';
 
 function MyPage() {
     return (

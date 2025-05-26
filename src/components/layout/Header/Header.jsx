@@ -1,9 +1,7 @@
-import styles from 'components/layout/Header/Header.module.css';
-
-import Login from 'components/layout/Header/LoginForm';
-
 import {Link} from 'react-router-dom';
+import Login from 'components/layout/Header/LoginForm';
 import Logo from 'components/layout/Logo/Logo';
+import styles from 'components/layout/Header/Header.module.css';
 
 export default function Header() {
 

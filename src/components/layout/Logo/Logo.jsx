@@ -1,7 +1,6 @@
-import styles from 'components/layout/Logo/Logo.module.css';
 import {FaRunning} from 'react-icons/fa';
-
 import {Link} from 'react-router-dom';
+import styles from 'components/layout/Logo/Logo.module.css';
 
 export default function Logo() {
 

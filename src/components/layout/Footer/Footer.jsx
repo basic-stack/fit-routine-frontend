@@ -1,7 +1,6 @@
-import styles from 'components/layout/Footer/Footer.module.css';
-
-import Logo from 'components/layout/Logo/Logo';
 import {Link} from 'react-router-dom';
+import Logo from 'components/layout/Logo/Logo';
+import styles from 'components/layout/Footer/Footer.module.css';
 
 export default function Footer() {
 
