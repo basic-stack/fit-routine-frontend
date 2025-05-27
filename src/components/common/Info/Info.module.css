@@ -5,7 +5,7 @@
 .textBox.nickName {
     border: solid 1px #334eac;
     width: 11.5rem;
-    height: 5rem;
+    height: 6rem;
     background-color: #d0e3ff;
     font-weight: 600;
 }
@@ -59,7 +59,7 @@
 .textBox.phone {
     border: solid 1px #334eac;
     width: 11.5rem;
-    height: 5rem;
+    height: 6rem;
     background-color: #d0e3ff;
     font-weight: 600;
 }
@@ -88,7 +88,7 @@
 .textBox.body {
     border: solid 1px #334eac;
     width: 11.5rem;
-    height: 13rem;
+    height: 16rem;
     background-color: #d0e3ff;
     font-weight: 600;
 }
