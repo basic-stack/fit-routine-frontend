@@ -1,7 +1,4 @@
 import { useEffect, useState } from 'react';
-import Input from 'components/common/Input/Input';
-import Button from 'components/common/Button/Button';
-import Select from 'components/common/Select/Select';
 import useDebounce from 'utils/hooks/debounce';
 
 const PURPOSE_OPTIONS = [
@@ -175,7 +172,7 @@ const RecommendForm = () => {
                     />
                 </>
             )}
-            <button size="long" text="다음" onClick={handleSubmit} />
+            <button onClick={handleSubmit}>다음</button>
         </>
     );
 };
