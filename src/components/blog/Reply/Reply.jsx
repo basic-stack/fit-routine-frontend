@@ -15,7 +15,8 @@ import ReplyEdit from '../ReplyEdit/ReplyEdit';
  * @param {number} replyId 댓글 번호
  * @param {number} [reCommentId] 참조한 댓글 번호
  * @param {object} like 좋아요 수, 클릭여부 (likeCount:0, isLiked:false)
- * @param {onClick} onClick Like컴포넌트에 전달될 onClick이벤트
+ * @param {onClick} likeOnClick Like컴포넌트에 전달될 onClick이벤트
+ * @param {onClick} changeReply ReplyEdit컴포넌트에 onClick이벤트 발생 시 실행되는 함수
  */
 function Reply({
     nickname,
@@ -25,7 +26,8 @@ function Reply({
     replyId,
     reCommentId,
     like,
-    onClick,
+    likeOnClick,
+    changeReply,
 }) {
     const replyInputRef = useRef(null);
     const [editIsClicked, setEditIsClicked] = useState(false);
@@ -52,6 +54,11 @@ function Reply({
         // eslint-disable-next-line
         const answer = confirm(replyId+'댓글을 삭제하시겠습니까?');
         answer ? alert('삭제완료!') : alert('삭제 취소');
+    }
+
+    const handleEditSubmit = (content) => {
+        setEditIsClicked(false);
+        changeReply(replyId, content);
     }
 
     return (
@@ -90,7 +97,7 @@ function Reply({
                             댓글 달기
                         </div>}
                         <div className={styles.likeBtn}>
-                            <Likes count={like.likeCount} isLiked={like.isLiked} onClick={onClick}/>
+                            <Likes count={like.likeCount} isLiked={like.isLiked} onClick={likeOnClick}/>
                         </div>
                     </div>
                     <hr className={styles.horizon} />
@@ -105,9 +112,7 @@ function Reply({
             }
             {editIsClicked && 
                 <div className={styles.editContainer}>
-                    <ReplyEdit content={replyContent} replyId={replyId} nickname={nickname} gender={gender}/>
-                        <button className={styles.editButton}><VscEdit/></button>
-                    
+                    <ReplyEdit content={replyContent} replyId={replyId} nickname={nickname} gender={gender} onClick={handleEditSubmit}/>
                 </div>
             }
         </>
