@@ -139,6 +139,18 @@ function BoardDetail() {
         );
     };
 
+    // 댓글 수정 완료 후 버튼 클릭시 api 수정요청 및 댓글 리렌더링
+    const changeReply = (id, content) => {
+        
+        const changeList = replyList.map((data)=>{
+            if (data.replyId === id) data.content = content; 
+            return data;
+        });        
+
+        // 추후 댓글 수정 api 작성
+        
+        setReplyList(changeList);
+    }
 
     return (
         <div className={styles.container}>
@@ -216,7 +228,8 @@ function BoardDetail() {
                             replyContent={parent.content}
                             reCommentId={parent.reCommentId}
                             like={replyLikeList.find(item=>item.replyId === parent.replyId)}
-                            onClick={() => handleReplyLikeClick(parent.replyId)}
+                            likeOnClick={() => handleReplyLikeClick(parent.replyId)}
+                            changeReply={changeReply}
                         />
                         {parent.child.map(child => (
                         <Reply
@@ -228,7 +241,8 @@ function BoardDetail() {
                             replyContent={child.content}
                             reCommentId={child.reCommentId}
                             like={replyLikeList.find(item=>item.replyId === child.replyId)}
-                            onClick={() => handleReplyLikeClick(child.replyId)}
+                            likeOnClick={() => handleReplyLikeClick(child.replyId)}
+                            changeReply={changeReply}
                         />
                         ))}
                     </div>
