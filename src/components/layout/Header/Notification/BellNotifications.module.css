@@ -31,14 +31,10 @@
     display: flex;
     justify-content: baseline;
 }
-p {
+.bottomArea p {
     margin-bottom: 1rem;
 }
 .allDeleteBtn {
     display: flex;
     justify-content: end;
-}
-
-.button{
-    
 }

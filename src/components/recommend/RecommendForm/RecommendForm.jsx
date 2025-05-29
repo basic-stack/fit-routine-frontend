@@ -1,21 +1,13 @@
 import { useEffect, useState } from 'react';
 import useDebounce from 'utils/hooks/debounce';
 
-const PURPOSE_OPTIONS = [
-    { value: 'none', label: '선택' },
-    { value: 'physical', label: '체력 강화' },
-    { value: 'strength', label: '근력 증진' },
-    { value: 'healthy', label: '건강 유지' },
-    { value: 'diet', label: '체중 감량' },
-];
-
-const TDEE_LIST = [
-    { value: 'none', label: '선택' },
-    { value: '1', label: '거의 하지 않음' },
-    { value: '2', label: '주 1~3회 운동' },
-    { value: '3', label: '주 4~5회 운동' },
-    { value: '4', label: '주 6~7회 운동' },
-];
+import label from 'assets/styles/common/label.module.css';
+import input from 'assets/styles/common/input.module.css';
+import select from 'assets/styles/common/select.module.css';
+import button from 'assets/styles/common/button.module.css';
+import form from 'assets/styles/common/form.module.css';
+import error from 'assets/styles/common/error.module.css';
+import styles from './RecommendForm.module.css';
 
 const getMissingRequiredErrors = (formData) => {
     const errors = {};
@@ -119,17 +111,35 @@ const RecommendForm = () => {
     };
 
     return (
-        <>
+        <div className={`${form.form} ${styles.form} ${styles.container}`}>
+            <h1 className={styles.title}>운동 추천</h1>
+
+            <label
+                className={`${label.label} ${styles.label}`}
+                htmlFor="purpose">
+                운동 목적
+            </label>
             <select
+                className={`${select.select} ${styles.select}`}
                 id="purpose"
                 name="purpose"
-                label="운동 목적"
                 value={formData.purpose}
-                error={errors.purpose}
-                onChange={handleChange}
-                options={PURPOSE_OPTIONS}
-            />
+                onChange={handleChange}>
+                <option value="none">== 선택 ==</option>
+                <option value="healthy">체력 증진</option>
+                <option value="weight">근력 강화</option>
+                <option value="healthy">건강 유지</option>
+                <option value="diet">체중 감량</option>
+            </select>
+            {errors.purpose && <p className={error.error}>{errors.purpose}</p>}
+
+            <label
+                className={`${label.label} ${styles.label}`}
+                htmlFor="startDate">
+                시작일
+            </label>
             <input
+                className={`${input.input} ${input.long}`}
                 type="date"
                 id="startDate"
                 name="startDate"
@@ -138,7 +148,17 @@ const RecommendForm = () => {
                 error={errors.startDate}
                 onChange={handleChange}
             />
+            {errors.startDate && (
+                <p className={error.error}>{errors.startDate}</p>
+            )}
+
+            <label
+                className={`${label.label} ${styles.label}`}
+                htmlFor="endDate">
+                종료일
+            </label>
             <input
+                className={`${input.input} ${input.long}`}
                 type="date"
                 id="endDate"
                 name="endDate"
@@ -147,30 +167,55 @@ const RecommendForm = () => {
                 error={errors.endDate}
                 onChange={handleChange}
             />
+            {errors.endDate && <p className={error.error}>{errors.endDate}</p>}
+
             {formData.purpose === 'diet' && (
                 <>
+                    <label
+                        className={`${label.label} ${styles.label}`}
+                        htmlFor="tdee">
+                        활동 수준
+                    </label>
                     <select
+                        className={`${select.select} ${styles.select}`}
                         id="tdee"
                         name="tdee"
-                        label="활둥 수준"
                         value={formData.tdee}
-                        error={errors.tdee}
-                        onChange={handleChange}
-                        options={TDEE_LIST}
-                    />
+                        onChange={handleChange}>
+                        <option value="none">== 선택 ==</option>
+                        <option value="1">거의 하지 않음</option>
+                        <option value="2">주 1~3회 운동</option>
+                        <option value="3">주 4~5회 운동</option>
+                        <option value="4">주 6~7회 운동</option>
+                    </select>
+                    {errors.tdee && (
+                        <p className={error.error}>{errors.tdee}</p>
+                    )}
+
+                    <label
+                        className={`${label.label} ${styles.label}`}
+                        htmlFor="goalWeight">
+                        목표 몸무게
+                    </label>
                     <input
+                        className={`${input.input} ${input.long}`}
                         type="number"
                         id="goalWeight"
                         name="goalWeight"
-                        label="목표 몸무게"
                         value={formData.goalWeight}
-                        error={errors.goalWeight}
                         onChange={handleChange}
                     />
+                    {errors.goalWeight && (
+                        <p className={error.error}>{errors.goalWeight}</p>
+                    )}
                 </>
             )}
-            <button onClick={handleSubmit}>다음</button>
-        </>
+            <button
+                className={`${button.button} ${button.long} ${styles.button}`}
+                onClick={handleSubmit}>
+                다음
+            </button>
+        </div>
     );
 };
 
