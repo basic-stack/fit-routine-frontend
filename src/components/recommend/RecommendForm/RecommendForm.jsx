@@ -130,7 +130,6 @@ const RecommendForm = () => {
                 options={PURPOSE_OPTIONS}
             />
             <input
-                size="long"
                 type="date"
                 id="startDate"
                 name="startDate"
@@ -140,7 +139,6 @@ const RecommendForm = () => {
                 onChange={handleChange}
             />
             <input
-                size="long"
                 type="date"
                 id="endDate"
                 name="endDate"
@@ -161,7 +159,6 @@ const RecommendForm = () => {
                         options={TDEE_LIST}
                     />
                     <input
-                        size="long"
                         type="number"
                         id="goalWeight"
                         name="goalWeight"
