@@ -18,44 +18,41 @@ export default function BoardAddEditPage() {
         { label: '체력 증진', value: 'stamina' },
     ];
 
-    const titleHandler = (e) => {
-        setTitle(e.target.value);
+    const titleHandler = (event) => {
+        setTitle(event.target.value);
     };
 
-    const categoryHandler = (e) => {
-        setCategory(e.target.value);
+    const categoryHandler = (event) => {
+        setCategory(event.target.value);
     };
 
-    const contentHandler = (e) => {
-        setContent(e.target.value);
+    const contentHandler = (event) => {
+        setContent(event.target.value);
     };
 
     return (
         <div className={styles.pageContainer}>
-            <form action={'#'} enctype="multipart/form-data" method="">
                 <div className={styles.formHeader}>
-                    <Input
-                        size="title"
+                    <input className={`${styles.long}`}
                         placeHolder="*제목을 입력하세요."
                         type="text"
                         value={title}
-                        onChange={titleHandler}
+                        onChange={event=>titleHandler(event)}
                     />
                     <CategorySelect
                         options={options}
                         value={category}
-                        onChange={categoryHandler}
+                        onChange={event=>categoryHandler(event)}
                     />
                 </div>
                 <div className={styles.attachFile}>
                     <input
                         type="file"
-                        text="파일첨부"
                         className={styles.fileInputBtn}
                         id="fileInput"
                     />
                     <label htmlFor="fileInput">
-                        <Button size="medium" text="파일첨부" type="button" />
+                        <button className={`${styles.short}`} type="button">파일첨부</button>
                     </label>
                     <div className={styles.imgContainer}>
                         <table className={styles.table}>
@@ -80,13 +77,12 @@ export default function BoardAddEditPage() {
                 <textarea
                     className={styles.boardContent}
                     value={content}
-                    onChange={contentHandler}></textarea>
+                    onChange={event=>contentHandler(event)}></textarea>
 
                 <div className={styles.btnContainer}>
-                    <Button size="medium" text="등록" />
-                    <Button size="medium" text="취소" />
+                    <button className={`${styles.short}`}>등록</button>
+                    <button className={`${styles.short}`}>취소</button>
                 </div>
-            </form>
         </div>
     );
 }
