@@ -15,8 +15,9 @@ import ReplyEdit from '../ReplyEdit/ReplyEdit';
  * @param {number} replyId 댓글 번호
  * @param {number} [reCommentId] 참조한 댓글 번호
  * @param {object} like 좋아요 수, 클릭여부 (likeCount:0, isLiked:false)
- * @param {onClick} likeOnClick Like컴포넌트에 전달될 onClick이벤트
- * @param {onClick} changeReply ReplyEdit컴포넌트에 onClick이벤트 발생 시 실행되는 함수
+ * @param {function} likeOnClick Like컴포넌트에 전달될 onClick이벤트
+ * @param {function} changeReply ReplyEdit컴포넌트에 onClick이벤트 발생 시 실행할 함수
+ * @param {function} addReply ReplyInput컴포넌트에 onClick이벤트 발생 시 실행할 함수
  */
 function Reply({
     nickname,
@@ -28,6 +29,7 @@ function Reply({
     like,
     likeOnClick,
     changeReply,
+    addReply,
 }) {
     const replyInputRef = useRef(null);
     const [editIsClicked, setEditIsClicked] = useState(false);
@@ -61,13 +63,18 @@ function Reply({
         changeReply(replyId, content);
     }
 
+    const handleNicknameClick = () => {
+        // 라우터를 통해 nickname 블로그로 이동
+        alert(nickname+'블로그 이동!');
+    }
+
     return (
         <>
             {!editIsClicked &&
                 <div className={`${styles.oneReply} ${reCommentId && styles.reCommentContainer}`}>
                     <div className={styles.replyHeader}>
                         <div className={`${styles.headerdiv} ${reCommentId && styles.reCommentDiv}`}>
-                            <span className={styles.replyWriter}>{nickname}</span>
+                            <span onClick={handleNicknameClick} className={styles.replyWriter}>{nickname}</span>
                             <span className={styles.edit} onClick={handleEditReply}>
                                 <VscEdit />
                             </span>
@@ -97,16 +104,16 @@ function Reply({
                             댓글 달기
                         </div>}
                         <div className={styles.likeBtn}>
-                            <Likes count={like.likeCount} isLiked={like.isLiked} onClick={likeOnClick}/>
+                            {like &&
+                            <Likes count={like.likeCount} isLiked={like.isLiked} onClick={likeOnClick}/>}
                         </div>
                     </div>
                     <hr className={styles.horizon} />
                     <div className={styles.reComment} id={replyId} ref={replyInputRef}>
-                        
                         <div className={styles.arrow}>
                             <VscIndent />
                         </div>
-                        <ReplyInput replyId={replyId} size={'small'} />
+                        <ReplyInput reCommentId={replyId} size={'small'} addReply={addReply}/>
                     </div>
                 </div>
             }

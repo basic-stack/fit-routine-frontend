@@ -87,12 +87,22 @@ function BoardDetail() {
         setBoardLike(makeLikeObject(dummyData.likeCount, dummyData.isLiked));
 
         // axios - boardId와 토큰으로 댓글 목록 요청 해야함
-        setReplyList(dummyReply);
         const list = dummyReply.map((item) => 
             makeLikeObject(item.likeCount, item.isLiked, item.replyId)
         );
+        
         setReplyLikeList(list);
+        setReplyList(dummyReply);
+        
     }, [boardId]);
+
+    useEffect(()=>{
+        const list = replyList.map((item) => 
+            makeLikeObject(item.likeCount, item.isLiked, item.replyId)
+        );
+        
+        setReplyLikeList(list);
+    }, [replyList])
 
     const prevImgHandler = () => {
         const count = imgCount === 0 ? boardData.imgList.length - 1 : imgCount - 1;
@@ -150,6 +160,10 @@ function BoardDetail() {
         // 추후 댓글 수정 api 작성
         
         setReplyList(changeList);
+    }
+
+    const addReply = (content) => {
+        setReplyList(prev=>[...prev,content]);
     }
 
     return (
@@ -213,7 +227,7 @@ function BoardDetail() {
                 }
             </div>
 
-            <ReplyInput boardId={boardData.boardId}/>
+            <ReplyInput boardId={boardData.boardId} addReply={addReply}/>
 
             <div className={styles.replyListContainer}>
                 {replyList && 
@@ -230,6 +244,7 @@ function BoardDetail() {
                             like={replyLikeList.find(item=>item.replyId === parent.replyId)}
                             likeOnClick={() => handleReplyLikeClick(parent.replyId)}
                             changeReply={changeReply}
+                            addReply={addReply}
                         />
                         {parent.child.map(child => (
                         <Reply
@@ -243,6 +258,7 @@ function BoardDetail() {
                             like={replyLikeList.find(item=>item.replyId === child.replyId)}
                             likeOnClick={() => handleReplyLikeClick(child.replyId)}
                             changeReply={changeReply}
+                            addReply={addReply}
                         />
                         ))}
                     </div>
