@@ -75,12 +75,12 @@ export default function AllBoardsPage() {
                 <span
                     onClick={() => changeOrder('like')}
                     className={`${styles.likeBtn}`}>
-                    <Button text={'좋아요순'} size="small" />
+                    <button className={`${styles.short} `}>좋아요순</button>
                 </span>
                 <span
                     onClick={() => changeOrder('latest')}
                     className={`${styles.latestBtn}`}>
-                    <Button text={'최신순'} size="small" />
+                    <button className={`${styles.short} `}>최신순</button>
                 </span>
                 <CategorySelect
                     options={categoryOptions}
