@@ -6,7 +6,7 @@ import Button from '../../../common/Button/Button';
 function GuestUserMenu() {
     return (
         <div className={styles.headerRight}>
-            <Button size="logInOut" text="로그인" />
+            <button size="logInOut" text="로그인" />
             <Link to="#">
                 <p>회원가입</p>
             </Link>

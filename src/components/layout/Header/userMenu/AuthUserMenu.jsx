@@ -14,7 +14,7 @@ export default function AuthUserMenu() {
 
     return (
         <div className={styles.headerRight}>
-            <Button size="logInOut" text="로그아웃" />
+            <button size="logInOut" text="로그아웃" />
 
             <div className={styles.icons}>
                 <Link to="#">
