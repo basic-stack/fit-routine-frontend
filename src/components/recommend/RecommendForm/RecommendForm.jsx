@@ -123,7 +123,7 @@ const RecommendForm = () => {
 
     return (
         <>
-            <Select
+            <select
                 id="purpose"
                 name="purpose"
                 label="운동 목적"
@@ -132,7 +132,7 @@ const RecommendForm = () => {
                 onChange={handleChange}
                 options={PURPOSE_OPTIONS}
             />
-            <Input
+            <input
                 size="long"
                 type="date"
                 id="startDate"
@@ -142,7 +142,7 @@ const RecommendForm = () => {
                 error={errors.startDate}
                 onChange={handleChange}
             />
-            <Input
+            <input
                 size="long"
                 type="date"
                 id="endDate"
@@ -154,7 +154,7 @@ const RecommendForm = () => {
             />
             {formData.purpose === 'diet' && (
                 <>
-                    <Select
+                    <select
                         id="tdee"
                         name="tdee"
                         label="활둥 수준"
@@ -163,7 +163,7 @@ const RecommendForm = () => {
                         onChange={handleChange}
                         options={TDEE_LIST}
                     />
-                    <Input
+                    <input
                         size="long"
                         type="number"
                         id="goalWeight"
@@ -175,7 +175,7 @@ const RecommendForm = () => {
                     />
                 </>
             )}
-            <Button size="long" text="다음" onClick={handleSubmit} />
+            <button size="long" text="다음" onClick={handleSubmit} />
         </>
     );
 };
