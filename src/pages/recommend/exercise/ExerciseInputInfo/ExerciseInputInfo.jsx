@@ -1,10 +1,13 @@
 import styles from './ExerciseInputInfo.module.css'
 import RecommendForm from 'components/recommend/RecommendForm/RecommendForm';
 
-const ExerciseInputInfo = () => {
+const ExerciseInputInfo = ({
+    goToNext,
+}) => {
     return (
         <div className={styles.container}>
-            <RecommendForm />
+            <RecommendForm 
+            goToNext={goToNext}/>
         </div>
     );
 };
