@@ -1,11 +1,10 @@
 import styles from './OnesBlogPage.module.css';
-import { VscEdit } from 'react-icons/vsc';
 import BoardsPaging from 'components/blog/BoardsPaging/BoardsPaging';
 import Likes from 'components/common/Likes/Likes';
 import BlogGrade from 'components/common/BlogGrade/BlogGrade';
 import GenderImage from 'components/common/GenderImage/GenderImage';
-import buttons from 'assets/styles/common/button.module.css';
 import { useEffect, useParams, useState } from 'react';
+import Introduce from 'components/blog/Introduce/Introduce';
 
 /**
  * 블로그 페이지
@@ -13,7 +12,6 @@ import { useEffect, useParams, useState } from 'react';
 function OnesBlogPage() {
     // const { nickname } = useParams('');    // <Route path="/blog/onesblog/:nickname" element={<OnesBlogPage />} />
     const [blog, setBlog] = useState({});
-    const [isEditClick, setIsEditClick] = useState(false);
     const [blogLike, setBlogLike] = useState({});
     
     
@@ -46,9 +44,7 @@ function OnesBlogPage() {
         blogDetail();
     }, []);
 
-    const handleEditClick = () => {
-        setIsEditClick(true);
-    }
+    
 
     return (
         <div className={styles.blogContainer}>
@@ -62,23 +58,7 @@ function OnesBlogPage() {
                         </div>
                     </div>
                     <hr></hr>
-                    <div className={styles.introduceContainer}>
-                        <div className={styles.introduceHeader}>
-                            <button className={`${buttons.button} ${styles.editBtn}`}>
-                                <VscEdit />
-                            </button>
-                        </div>
-                        <div className={styles.introduceText}>
-                            {blog.introduce && blog.introduce
-                                .split('\n')
-                                .map((line, idx) => (
-                                    <span key={idx}>
-                                        {line}
-                                        <br />
-                                    </span>
-                                ))}
-                        </div>
-                    </div>
+                    <Introduce intro={blog.introduce}/>
                 </div>
                 <div className={styles.gradeContainer}>
                     <BlogGrade grade={blog.blogGrade} />
