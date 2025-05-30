@@ -75,14 +75,18 @@ const getValidationErrors = async (formData) => {
     return errors;
 };
 
-const ExerciseInputInfo = () => {
-    const [formData, setFormData] = useState({
-        purpose: '',
-        startDate: '',
-        endDate: '',
-        tdee: '',
-        goalWeight: '',
-    });
+const ExerciseInputInfo = ({
+    goToNext,
+    formData,
+    setFormData
+}) => {
+    // const [formData, setFormData] = useState({
+    //     purpose: '',
+    //     startDate: '',
+    //     endDate: '',
+    //     tdee: '',
+    //     goalWeight: '',
+    // });
 
     const [errors, setErrors] = useState({
         purpose: '',
@@ -123,7 +127,9 @@ const ExerciseInputInfo = () => {
         }
 
         // 임시 로직
+        console.log(formData);
         alert('제출 성공!');
+        goToNext();
     };
 
     return (

@@ -17,18 +17,22 @@ const checkRepeatRequired = (repeat) => {
     return errors;
 };
 
-function ExerciseRepeatsDay() {
-    const [repeat, setRepeat] = useState('');
+function ExerciseRepeatsDay({ goToNext, formData, setFormData }) {
+    // const [repeat, setRepeat] = useState('');
     const [errors, setErrors] = useState({});
 
     const repeatDay = [1, 2, 3, 4, 5, 6, 7];
 
     const handleChange = (event) => {
-        setRepeat(event.target.value);
+        const repeat = event.target.value;
+        setFormData((prev) => ({
+            ...prev,
+            repeatDay: repeat,
+        }));
     };
 
     const handleSubmit = () => {
-        const validationResult = checkRepeatRequired(repeat);
+        const validationResult = checkRepeatRequired(formData.repeatDay);
         setErrors(validationResult);
 
         if (Object.keys(validationResult).length > 0) {
@@ -36,13 +40,19 @@ function ExerciseRepeatsDay() {
         }
 
         // 다음 페이지 이동 로직 추가
+        alert('제출 성공');
+        console.log(formData);
+        console.log(formData.repeatDay);
+        goToNext();
     };
 
     return (
         <form className={`${form.form} ${styles.form}`}>
             <h1 className={styles.title}>반복일</h1>
             {repeatDay.map((day, index) => (
-                <label className={`${label.label} ${styles.container}`} key={`${day}_${index}`} >
+                <label
+                    className={`${label.label} ${styles.container}`}
+                    key={`${day}_${index}`}>
                     <span className={styles.dayNo}>{day}일 반복</span>
                     <input
                         type="radio"
@@ -57,6 +67,7 @@ function ExerciseRepeatsDay() {
             {errors.repeat && <p className={error.error}>{errors.repeat}</p>}
 
             <button
+                type="button"
                 className={`${button.button} ${button.long} ${styles.button}`}
                 onClick={handleSubmit}>
                 다음

@@ -88,7 +88,11 @@ const handleCalculateCarolie = (exerciseList, weight) => {
     }, 0);
 };
 
-function RecommendExercise() {
+function RecommendExercise({
+    goToNext,
+    formData,
+    setFormData
+}) {
     const [data, setData] = useState([]);
     const [openDataList, setOpenDataList] = useState([]);
     const [checkedItems, setCheckedItems] = useState({});
@@ -186,16 +190,29 @@ function RecommendExercise() {
         );
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
         for (const day of data) {
             const dayNo = day.dayNo;
             if (!checkedItems[dayNo] || checkedItems[dayNo].length === 0) {
                 alert(`${dayNo}일차에 선택된 운동이 존재하지 않습니다.`);
                 return;
+            } else if (day.kcal < DAILY_BURN_KCAL ){
+                alert(`${dayNo}일차 칼로리가 부족합니다.`);
+                return;
             }
         }
+
+        setFormData((prev) => ({
+            ...prev,
+            exerciseData : data,
+        }));
+
+
         alert('폼 제출 완료');
-        console.log('제출 데이터 ::: ', data);
+        console.log('제출 데이터 ::: ', formData);
+        goToNext();
     };
 
     return (

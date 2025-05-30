@@ -4,13 +4,24 @@ import ExerciseRepeatsDay from './ExerciseRepeatsDay/ExerciseRepeatsDay';
 import RecommendExercise from './RecommendExercise/RecommendExercise';
 
 function AllExercisePages() {
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({
+        purpose: '',
+        startDate: '',
+        endDate: '',
+        tdee: '',
+        goalWeight: '',
+        repeatDay: '',
+        exerciseData: [
+            {},
+        ],
+    });
+
     const [step, setStep] = useState(0);
 
-    const handleSubmit = () => {};
+    const performData = () => {};
 
     const goToNext = () => {
-        step === 2 ? handleSubmit() : setStep(step + 1);
+        step === 2 ? performData() : setStep(step + 1);
     };
 
     return (
@@ -33,7 +44,7 @@ function AllExercisePages() {
 
             {step === 2 && (
                 <RecommendExercise
-                    goToNext={handleSubmit}
+                    goToNext={goToNext}
                     formData={formData}
                     setFormData={setFormData}
                 />
