@@ -51,8 +51,6 @@ function ExerciseRepeatsDay({ goToNext, formData, setFormData }) {
         }
 
         alert('제출 성공');
-        console.log(formData);
-        console.log("반복일 :: " + formData.repeatDay);
         goToNext();
     };
 

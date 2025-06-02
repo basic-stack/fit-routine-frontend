@@ -11,14 +11,14 @@ function AllExercisePages() {
         tdee: '',
         goalWeight: '',
         repeatDay: '',
-        exerciseData: [
-            {},
-        ],
+        exerciseData: [{}],
     });
 
     const [step, setStep] = useState(0);
 
-    const performData = () => {};
+    const performData = () => {
+        alert('운동 루틴이 저장되었습니다!');
+    };
 
     const goToNext = () => {
         step === 2 ? performData() : setStep(step + 1);
