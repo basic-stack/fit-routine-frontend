@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getRoutineMvpUser } from 'utils/api/mainApi.js';
 import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -20,20 +21,37 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip);
  * @param {string[]} [props.colors] - 각 항목의 색상
  */
 function BarChart() {
+    const [mvpData, setMvpData] = useState(
+        {won: '', second: '', third: ''}
+    );
+
+    useEffect( () => {
+        const fetchMvpData = async () => {
+            // 루틴 테이블에서 아이디 별로 그룹화한 것 중에 수가 가장 많은
+            // 3개의 아이디를 구해서 해당 회원의 닉네임 가져오는 함수
+            const result = await getRoutineMvpUser();
+            alert(result);
+            setMvpData (result);
+            
+            // 임시 처리
+            setMvpData(
+                {won: '다이어트는 내일부터', second: '홍길동', third: '내가 임마'}
+            );
+        };
+
+        fetchMvpData();
+    }, []);
+
     const data = {
-        labels: ['다이어트는 내일부터', '홍길동', '내가 임마'],
+        labels: [mvpData.won, mvpData.second, mvpData.third],
         datasets: [
             {
                 label: 'Data',
                 data: [2, 3, 1],
-                // backgroundColor: '#D0E3FF', // 그래프 Bar의 색상
-                // backgroundColor: '#334EAC', // 그래프 Bar의 색상
-                // backgroundColor: ['#BAD6EB', '#334EAC', '#D0E3FF'], // 그래프 Bar의 색상
-                // backgroundColor: ['rgb(192,192,192)', 'rgb(255, 215, 0)', 'rgb(205,127,50)'], // 그래프 Bar의 색상
                 backgroundColor: [
-                    'linear-gradient(90deg, #FFd700, #FFa500)',
-                    'linear-gradient(90deg, #C0C0C0, #E0E0E0)',
-                    '#B87333',
+                    'rgb(192,192,192)', 
+                    'rgb(255, 215, 0)', 
+                    'rgb(205,127,50)'
                 ], // 그래프 Bar의 색상
                 borderWidth: 0,
             },
@@ -59,8 +77,7 @@ function BarChart() {
                     font: {
                         size: 15, // 기본: 12
                     },
-                    color: '#334EAC',
-                    // color: '#D0E3FF',
+                    color: '#000000',
                 },
                 border: {
                     display: false, // x축 선 제거
