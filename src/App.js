@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Header from 'components/layout/Header/Header';
 import Footer from 'components/layout/Footer/Footer';
-import ExerciseInputInfo from 'pages/recommend/exercise/ExerciseInputInfo/ExerciseInputInfo';
 
 function App() {
     return (
@@ -13,7 +12,6 @@ function App() {
                 <Header />
 
                 <div className={styles.layout}>
-                    <ExerciseInputInfo/>
                 </div>
 
                 <Footer />
