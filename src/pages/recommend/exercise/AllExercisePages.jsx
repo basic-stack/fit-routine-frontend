@@ -11,7 +11,9 @@ function AllExercisePages() {
         tdee: '',
         goalWeight: '',
         repeatDay: '',
-        exerciseData: [{}],
+        exerciseData: ['1,2', '55,6'],
+        // exerciseData: { 1:[1,2], 2:[55, 6]},
+        // exerciseData: [[1,2], [55, 6]],
     });
 
     const [step, setStep] = useState(0);
