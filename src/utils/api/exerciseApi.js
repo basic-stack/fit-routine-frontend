@@ -1,7 +1,32 @@
+import axios from 'axios';
+
+// axios 객체 생성
+const apiAxios = axios.create({
+    baseURL: 'http://localhost:8080',
+});
+
+// 통신 오류 발생 시 처리
+apiAxios.interceptors.response.use(
+    function (response) {
+        return response;
+    },
+    function (error) {
+        if (error.status === 401) {
+        }
+        // errorAlert('문제가 발생했습니다.');
+        return Promise.reject(error);
+    },
+);
+
+const testMockData = async (formData) => {
+    const dayRepeat = formData.dayRepeat;
+    const response = await apiAxios.get('/exercise/recommend');
+};
+
 // 랜덤 추출할 루틴 정보
 const getMockData = (formData) => {
     // 사용자가 선택한 반복일수
-    const repeatsDay = formData.repeatDay;
+    const dayRepeat = formData.dayRepeat;
     const exerciseList = [
         { id: 1, name: '런지', met: 3, category: '근력' },
         { id: 2, name: '크런치', met: 4, category: '근력' },
@@ -15,9 +40,9 @@ const getMockData = (formData) => {
         { id: 10, name: '스쿼트', met: 3, category: '하체' },
     ];
 
-    return Array.from({ length: repeatsDay }, (_, index) => ({
+    return Array.from({ length: dayRepeat }, (_, index) => ({
         todoId: 1,
-        repeatsDay,
+        dayRepeat,
         dailyExerciseId: index + 1,
         dayNo: index + 1,
         weight: 60,

@@ -161,7 +161,7 @@ function RecommendExercise({ goToNext, formData, setFormData }) {
             <p className={styles.title}>FIT-ROUTINE</p>
 
             {data
-                .filter((_, index) => index <= formData.repeatDay)
+                .filter((_, index) => index <= formData.dayRepeat)
                 .map((oneDayData, index) => {
                     const dayNo = oneDayData.dayNo;
 

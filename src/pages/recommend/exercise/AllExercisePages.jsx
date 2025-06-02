@@ -5,12 +5,15 @@ import RecommendExercise from './RecommendExercise/RecommendExercise';
 
 function AllExercisePages() {
     const [formData, setFormData] = useState({
-        purpose: '',
+        todoId: '',
         startDate: '',
         endDate: '',
+        purpose: '',
+        category: 'exercise',
         tdee: '',
         goalWeight: '',
-        repeatDay: '',
+        dayRepeat: '',
+        dayKcal: '',
         exerciseData: ['1,2', '55,6'],
         // exerciseData: { 1:[1,2], 2:[55, 6]},
         // exerciseData: [[1,2], [55, 6]],

@@ -6,6 +6,7 @@ import label from 'assets/styles/common/label.module.css';
 import error from 'assets/styles/common/error.module.css';
 import form from 'assets/styles//common/form.module.css';
 import button from 'assets/styles/common/button.module.css';
+import { getDayDiff } from 'utils/helpers/exercise';
 
 const checkRepeatRequired = (repeat) => {
     const errors = {};
@@ -17,33 +18,22 @@ const checkRepeatRequired = (repeat) => {
     return errors;
 };
 
-// 종료일-시작일 구하기
-const getDayDiff = (start, end) => {
-    const startDate = new Date(start);
-    const endDate = new Date(end);
-
-    const diffInMilliseconds = endDate.getTime() - startDate.getTime();
-    const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24)) + 1;
-
-    return diffInDays;
-};
-
 function ExerciseRepeatsDay({ goToNext, formData, setFormData }) {
     const [errors, setErrors] = useState({});
 
     const dayDiff = getDayDiff(formData.startDate, formData.endDate);
-    const repeatDay = Array.from({ length: dayDiff }, (_, i) => i + 1);
+    const dayRepeat = Array.from({ length: dayDiff }, (_, i) => i + 1);
 
     const handleChange = (event) => {
         const repeat = event.target.value;
         setFormData((prev) => ({
             ...prev,
-            repeatDay: repeat,
+            dayRepeat: repeat,
         }));
     };
 
     const handleSubmit = () => {
-        const validationResult = checkRepeatRequired(formData.repeatDay);
+        const validationResult = checkRepeatRequired(formData.dayRepeat);
         setErrors(validationResult);
 
         if (Object.keys(validationResult).length > 0) {
@@ -57,7 +47,7 @@ function ExerciseRepeatsDay({ goToNext, formData, setFormData }) {
     return (
         <form className={`${form.form} ${styles.form}`}>
             <h1 className={styles.title}>반복일</h1>
-            {repeatDay.slice(0, 7).map((day, index) => (
+            {dayRepeat.slice(0, 7).map((day, index) => (
                 <label
                     className={`${label.label} ${styles.container}`}
                     key={`${day}_${index}`}>
