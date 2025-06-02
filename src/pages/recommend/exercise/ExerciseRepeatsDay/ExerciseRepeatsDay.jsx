@@ -17,11 +17,22 @@ const checkRepeatRequired = (repeat) => {
     return errors;
 };
 
+// 종료일-시작일 구하기
+const getDayDiff = (start, end) => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+
+    const diffInMilliseconds = endDate.getTime() - startDate.getTime();
+    const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24)) + 1;
+
+    return diffInDays;
+};
+
 function ExerciseRepeatsDay({ goToNext, formData, setFormData }) {
-    // const [repeat, setRepeat] = useState('');
     const [errors, setErrors] = useState({});
 
-    const repeatDay = [1, 2, 3, 4, 5, 6, 7];
+    const dayDiff = getDayDiff(formData.startDate, formData.endDate);
+    const repeatDay = Array.from({ length: dayDiff }, (_, i) => i + 1);
 
     const handleChange = (event) => {
         const repeat = event.target.value;
@@ -39,17 +50,16 @@ function ExerciseRepeatsDay({ goToNext, formData, setFormData }) {
             return;
         }
 
-        // 다음 페이지 이동 로직 추가
         alert('제출 성공');
         console.log(formData);
-        console.log(formData.repeatDay);
+        console.log("반복일 :: " + formData.repeatDay);
         goToNext();
     };
 
     return (
         <form className={`${form.form} ${styles.form}`}>
             <h1 className={styles.title}>반복일</h1>
-            {repeatDay.map((day, index) => (
+            {repeatDay.slice(0, 7).map((day, index) => (
                 <label
                     className={`${label.label} ${styles.container}`}
                     key={`${day}_${index}`}>
