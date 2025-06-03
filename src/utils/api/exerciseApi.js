@@ -13,14 +13,15 @@ apiAxios.interceptors.response.use(
     function (error) {
         if (error.status === 401) {
         }
-        // errorAlert('문제가 발생했습니다.');
         return Promise.reject(error);
     },
 );
 
-const testMockData = async (formData) => {
-    const dayRepeat = formData.dayRepeat;
-    const response = await apiAxios.get('/exercise/recommend');
+const testGetData = async ({ formData }) => {
+    const response = await apiAxios.get('/exercise/recommend', {
+        dayRepeat: formData.dayRepeat,
+    });
+    return response.data;
 };
 
 // 랜덤 추출할 루틴 정보
@@ -71,4 +72,4 @@ const getMockOpenData = () => {
     ];
 };
 
-export { getMockData, getMockOpenData };
+export { getMockData, getMockOpenData, testGetData };

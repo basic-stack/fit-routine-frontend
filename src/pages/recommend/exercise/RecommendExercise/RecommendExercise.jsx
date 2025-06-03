@@ -7,7 +7,7 @@ import CategoryForm from 'components/recommend/CategoryForm/CategoryForm';
 import styles from './RecommendExercise.module.css';
 import button from 'assets/styles/common/button.module.css';
 import error from 'assets/styles/common/error.module.css';
-import { getMockData, getMockOpenData } from 'utils/api/exerciseApi';
+import { getMockData, getMockOpenData, testGetData } from 'utils/api/exerciseApi';
 
 const DAILY_BURN_KCAL = 400; // 하루 소모 칼로리(임의)
 const EXERCISE_TIME = 0.25; // 운동 시간
@@ -60,6 +60,21 @@ function RecommendExercise({ goToNext, formData, setFormData }) {
 
         fetchData();
     }, []);
+    
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const result = await testMockData(formData);
+    //             console.log(result);
+    //             alert('연결 성공');
+    //         } catch (error) {
+    //             console.error(error);
+    //             alert('연결 실패!');
+    //         }
+    //     };
+
+    //     fetchData();
+    // }, []);
 
     // 카테고리 표시
     const handleShowCategory = (dayNo) => {
