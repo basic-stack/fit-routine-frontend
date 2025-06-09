@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './ReSign.module.css';
 import label from 'assets/styles/common/label.module.css';
@@ -6,13 +6,33 @@ import input from 'assets/styles/common/input.module.css';
 import textarea from 'assets/styles/common/textarea.module.css';
 import button from 'assets/styles/common/button.module.css';
 import ReSignInfo from 'components/common/Info/ResignInfo';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function ReSign() {
+    const navigate = useNavigate();
+
     const [info, setInfo] = useState({
         email: 'squatqueen@gymfit.com',
         nickName: '스쿼트요정',
     });
+
+    useEffect(() => {
+        // 이메일과 닉네임을 불러오는 api요청: TODO
+        const fetchInfo = async () => {
+            // const result = await getInfo();
+            // console.log(result);
+            // setInfo(result);
+        };
+        fetchInfo();
+    });
+
+    const handleResign = async () => {
+        alert("회원 탈퇴 클릭됨");
+        // 1) 탈퇴 사유가 있다면 '탈퇴사유' 저장 api함수: TODO
+        // 2) 해당 회원 탈퇴 api함수: TODO
+        // 3) 토큰 삭제
+        // 4) navigate('/');    // 메인 페이지로 이동
+    };
 
     return (
         <>
@@ -94,18 +114,18 @@ function ReSign() {
             </div>
             <div className={styles.btnArea}>
                 <div className={styles.btns}>
-                    <Link to='/'>
-                        <button 
-                            className={`${button.button} ${styles.smallBtn}`}>
-                            회원 탈퇴
-                        </button>
-                    </Link>
-                    <Link to='/mypage'>
-                        <button 
-                            className={`${button.button} ${styles.smallBtn}`}>
-                            탈퇴 취소
-                        </button>
-                    </Link>
+                    <button 
+                        className={`${button.button} ${styles.smallBtn}`}
+                        onClick={handleResign}
+                    >
+                        회원 탈퇴
+                    </button>
+                    <button 
+                        className={`${button.button} ${styles.smallBtn}`}
+                        onClick={() => navigate('/mypage')}
+                    >
+                        탈퇴 취소
+                    </button>
                 </div>
             </div>
         </>
