@@ -23,8 +23,15 @@ const getLikeList = async () => {
     return response.data;
 }
 
+// 로그인한 회원의 관심 목록 중에 선택하여 삭제하는 api 함수
+const deleteFollow = async (memberId) => {
+    const response = await apiAxios.delete(`/members/likeList/delete?memberId=${memberId}`);
+    return response.data;
+}
+
 export {
     getUserProfile,
     editUserInfo,
     getLikeList, 
+    deleteFollow, 
 };

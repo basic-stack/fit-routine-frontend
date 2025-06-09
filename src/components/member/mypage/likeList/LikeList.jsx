@@ -23,23 +23,24 @@ function LikeList() {
         // { nickName: '워밍업요정', gender: 'female', grade: 199 },
     ]);
 
-    useEffect(() => {
-        const fetchLikeList = async () => {
-            const result = await getLikeList();
-            const parsedResult = result.map((item) => {
-                let gender;
-                if (item.gender === 'M') gender = 'male';
-                else if (item.gender === 'F') gender = 'female';
-                else gender = null;
+    const fetchLikeList = async () => {
+        const result = await getLikeList();
+        const parsedResult = result.map((item) => {
+            let gender;
+            if (item.gender === 'M') gender = 'male';
+            else if (item.gender === 'F') gender = 'female';
+            else gender = null;
 
-                return {
-                    ...item, 
-                    gender, 
-                };
-            });
-            console.log(parsedResult);
-            setLikeList(parsedResult);
-        };
+            return {
+                ...item, 
+                gender, 
+            };
+        });
+        console.log(parsedResult);
+        setLikeList(parsedResult);
+    };
+
+    useEffect(() => {
         fetchLikeList();
     }, []);
 
@@ -56,6 +57,7 @@ function LikeList() {
                                 nickName={like.nickname}
                                 gender={like.gender}
                                 grade={like.grade}
+                                fetchLikeList={fetchLikeList}
                             />
                         );
                     })

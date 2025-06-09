@@ -3,9 +3,16 @@ import styles from './Like.module.css';
 import button from 'assets/styles/common/button.module.css';
 import BlogGrade from 'components/common/BlogGrade/BlogGrade';
 import { useNavigate } from 'react-router-dom';
+import { deleteFollow } from 'utils/api/profileApi.js';
 
-function Like({ memberId, gender, nickName, grade }) {
+function Like({ memberId, gender, nickName, grade, fetchLikeList }) {
     const navigate = useNavigate();
+
+    const handleDeleteFollow = async () => {
+        const result = await deleteFollow(memberId);
+        fetchLikeList();
+        console.log(result);
+    }
 
     return (
         <div className={styles.likeContainer}>
@@ -27,7 +34,9 @@ function Like({ memberId, gender, nickName, grade }) {
             </div>
             <div className={styles.cutBtn}>
                 <button
-                    className={`${button.button} ${styles.deleteBtn}`}>
+                    className={`${button.button} ${styles.deleteBtn}`}
+                    onClick={handleDeleteFollow}
+                >
                     관심 끊기
                 </button>
             </div>
