@@ -22,14 +22,8 @@ function Introduce({intro, nickname}) {
     // 소개글 수정 후 수정버튼까지 클릭했을때
     const handleEditCompleteClick = async (content) => {
         const result = await editIntroduce(content, nickname);
-
-        if(result === 'success'){
-            setIntroduce(content);
-            setIsEditClick(false);
-        } else {
-            alert('오류');
-            setIsEditClick(false);
-        }
+        setIntroduce(result.introduce);
+        setIsEditClick(false);
     }
     
     const cancelClick = () => {

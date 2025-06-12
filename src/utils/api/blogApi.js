@@ -4,25 +4,26 @@ const apiAxios = axios.create({
     baseURL: 'http://localhost:8080',
 });
 
-apiAxios.interceptors.request.use(
-  (config) => {
-    // const token = localStorage.getItem('token'); 
-    const token = '';
+// apiAxios.interceptors.request.use(
+//   (config) => {
+//     // const token = localStorage.getItem('token'); 
+//     const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0XzFAZ21haWwuY29tIiwiaWF0IjoxNzQ5NzE4MzI4LCJleHAiOjE3NDk4MDQ3Mjh9.9z1rIutjbzrdB2L9vHosmLRhjdak_75erD3I-N7ke4E';
 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+//     if (token) {
+//       config.headers.Authorization = `Bearer ${token}`;
+//     }
 
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
 
 
 const getBlogDetailByBlogId = async (nickname) => {
     const response = await apiAxios.get(`/blogs/${nickname}`);
+    
     return response.data;
 };
 
@@ -41,6 +42,7 @@ const editIntroduce = async (introduce, nickname) => {
         introduce,
     }
     const response = await apiAxios.patch(`/blogs/${nickname}`, body);
+    
     return response.data;
 }
 
