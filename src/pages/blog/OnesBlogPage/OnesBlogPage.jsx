@@ -12,13 +12,13 @@ import { useParams } from 'react-router-dom';
  * 블로그 페이지
  */
 function OnesBlogPage() {
-    const { blogId } = useParams(); 
+    const { nickname } = useParams(); 
     const [blog, setBlog] = useState(null);
     const [blogLike, setBlogLike] = useState(null);
 
     // blogId과 로그인유저의 토큰(좋아요 확인용)으로 blog정보 api요청
     const blogDetail = async () => {
-        const data = await getBlogDetailByBlogId(blogId);
+        const data = await getBlogDetailByBlogId(nickname);
         
         setBlog({
             nickname: data.nickname,
@@ -34,7 +34,7 @@ function OnesBlogPage() {
 
     useEffect(() => {
         blogDetail();
-    }, [blogId]); 
+    }, [nickname]); 
 
     const handleLikeClick = async () => {
         const prev = blogLike;
@@ -45,7 +45,7 @@ function OnesBlogPage() {
         });
 
         try {
-            await likeOrUnlikeBlogAPI(blogLike.isLiked, blogId);
+            await likeOrUnlikeBlogAPI(blogLike.isLiked, nickname);
         } catch (error) {
             setBlogLike(prev);
             alert('좋아요 처리에 실패했습니다.');
@@ -74,7 +74,7 @@ function OnesBlogPage() {
                                 </div>
                             </div>
                             <hr />
-                            <Introduce intro={blog.introduce} blogId={blogId}/>
+                            <Introduce intro={blog.introduce} nickname={nickname}/>
                         </div>
                         <div className={styles.gradeContainer}>
                             <BlogGrade grade={blog.blogGrade} />

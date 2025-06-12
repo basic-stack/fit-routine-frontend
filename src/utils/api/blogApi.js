@@ -6,7 +6,8 @@ const apiAxios = axios.create({
 
 apiAxios.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token'); 
+    // const token = localStorage.getItem('token'); 
+    const token = '';
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -20,31 +21,27 @@ apiAxios.interceptors.request.use(
 );
 
 
-const getBlogDetailByBlogId = async (blogId) => {
-    const response = await apiAxios.get(`/blogs/${blogId}`);
-
+const getBlogDetailByBlogId = async (nickname) => {
+    const response = await apiAxios.get(`/blogs/${nickname}`);
     return response.data;
 };
 
-const likeOrUnlikeBlogAPI = async (isLiked, blogId) => {
-
+const likeOrUnlikeBlogAPI = async (isLiked, nickname) => {
     if (isLiked) {
         // 관심 해제
-        const response = await apiAxios.delete(`/blogs/${blogId}/likes`);
+        const response = await apiAxios.delete(`/blogs/${nickname}/follow`);
     } else {
         // 관심 등록
-        const response = await apiAxios.post(`/blogs/${blogId}/likes`, null);
+        const response = await apiAxios.post(`/blogs/${nickname}/follow`);
     }
 };
 
-const editIntroduce = async (introduce, blogId) => {
-    
+const editIntroduce = async (introduce, nickname) => {
     const body = {
         introduce,
     }
-    const response = await apiAxios.put(`/blogs/${blogId}`, body);
+    const response = await apiAxios.patch(`/blogs/${nickname}`, body);
     return response.data;
-    
 }
 
 const saveBoard = async (boardId, formData) => {

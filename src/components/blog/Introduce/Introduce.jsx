@@ -11,7 +11,7 @@ import { editIntroduce } from 'utils/api/blogApi';
  * @param {string} intro 블로그 소개글 내용
  *  
  */
-function Introduce({intro, blogId}) {
+function Introduce({intro, nickname}) {
     const [isEditClick, setIsEditClick] = useState(false);
     const [introduce, setIntroduce] = useState(intro);
 
@@ -21,7 +21,7 @@ function Introduce({intro, blogId}) {
 
     // 소개글 수정 후 수정버튼까지 클릭했을때
     const handleEditCompleteClick = async (content) => {
-        const result = await editIntroduce(content, blogId);
+        const result = await editIntroduce(content, nickname);
 
         if(result === 'success'){
             setIntroduce(content);
