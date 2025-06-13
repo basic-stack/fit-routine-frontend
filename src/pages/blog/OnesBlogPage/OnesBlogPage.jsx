@@ -5,7 +5,7 @@ import BlogGrade from 'components/common/BlogGrade/BlogGrade';
 import GenderImage from 'components/common/GenderImage/GenderImage';
 import { useEffect, useState } from 'react';
 import Introduce from 'components/blog/Introduce/Introduce';
-import { getBlogDetailByBlogId, likeOrUnlikeBlogAPI } from 'utils/api/blogApi';
+import { getBlogDetailByBlogId, getIsLikedByBlogId, getLikeCountByBlogId, likeOrUnlikeBlogAPI } from 'utils/api/blogApi';
 import { useParams } from 'react-router-dom';
 
 /**
@@ -18,17 +18,22 @@ function OnesBlogPage() {
 
     // blogId과 로그인유저의 토큰(좋아요 확인용)으로 blog정보 api요청
     const blogDetail = async () => {
-        const data = await getBlogDetailByBlogId(nickname);
+        const blogData = await getBlogDetailByBlogId(nickname);
         
         setBlog({
-            nickname: data.nickname,
-            gender: data.gender === 'M'? 'male':'female',
-            introduce: data.introduce,
-            blogGrade: data.grade,
+            blogId: blogData.blogId,
+            nickname: blogData.nickname,
+            gender: blogData.gender === 'M'? 'male':'female',
+            introduce: blogData.introduce,
+            blogGrade: blogData.grade,
         });
+
+        const likeCount = await getLikeCountByBlogId(blogData.blogId);
+        const isLiked = await getIsLikedByBlogId(blogData.blogId);
+        
         setBlogLike({
-            likeCount:data.likeCount,
-            isLiked:data.liked,
+            likeCount:likeCount.count,
+            isLiked:isLiked.followed,
         });
     };
 
@@ -45,7 +50,7 @@ function OnesBlogPage() {
         });
 
         try {
-            await likeOrUnlikeBlogAPI(blogLike.isLiked, nickname);
+            await likeOrUnlikeBlogAPI(blogLike.isLiked, blog.blogId);
         } catch (error) {
             setBlogLike(prev);
             alert('좋아요 처리에 실패했습니다.');
@@ -65,12 +70,14 @@ function OnesBlogPage() {
                                     {blog.nickname}'s Blog
                                 </div>
                                 <div className={styles.follow}>
-                                    <Likes
-                                        count={blogLike.likeCount}
-                                        isBig={true}
-                                        isLiked={blogLike.isLiked}
-                                        onClick={handleLikeClick}
-                                    />
+                                    {blogLike &&
+                                        <Likes
+                                            count={blogLike.likeCount}
+                                            isBig={true}
+                                            isLiked={blogLike.isLiked}
+                                            onClick={handleLikeClick}
+                                        />
+                                    }
                                 </div>
                             </div>
                             <hr />

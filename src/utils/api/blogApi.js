@@ -27,13 +27,23 @@ const getBlogDetailByBlogId = async (nickname) => {
     return response.data;
 };
 
-const likeOrUnlikeBlogAPI = async (isLiked, nickname) => {
+const getLikeCountByBlogId = async (blogId) => {
+    const response = await apiAxios.get(`/blogs/${blogId}/followers/count`);
+    return response.data;
+};
+
+const getIsLikedByBlogId = async (blogId) => {
+    const response = await apiAxios.get(`/blogs/${blogId}/follow`);
+    return response.data;
+};
+
+const likeOrUnlikeBlogAPI = async (isLiked, blogId) => {
     if (isLiked) {
         // 관심 해제
-        const response = await apiAxios.delete(`/blogs/${nickname}/follow`);
+        const response = await apiAxios.delete(`/blogs/${blogId}/follow`);
     } else {
         // 관심 등록
-        const response = await apiAxios.post(`/blogs/${nickname}/follow`);
+        const response = await apiAxios.post(`/blogs/${blogId}/follow`);
     }
 };
 
@@ -67,4 +77,13 @@ const getBoardDetailWithLike = async (boardId) => {
 }
 
 
-export { getBlogDetailByBlogId, likeOrUnlikeBlogAPI, editIntroduce, saveBoard, fetchBoardDataByBoardId, getBoardDetailWithLike };
+export { 
+    getBlogDetailByBlogId, 
+    likeOrUnlikeBlogAPI, 
+    editIntroduce, 
+    saveBoard, 
+    fetchBoardDataByBoardId, 
+    getBoardDetailWithLike, 
+    getLikeCountByBlogId,
+    getIsLikedByBlogId
+ };
