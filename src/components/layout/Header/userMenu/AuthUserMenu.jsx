@@ -55,7 +55,6 @@ export default function AuthUserMenu() {
     const handleLogout = () => {
         logout();
         setLoggedIn(false);
-        window.location.href='/';
     };
 
     return (
